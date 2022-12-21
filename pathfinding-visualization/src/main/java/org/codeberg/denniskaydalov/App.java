@@ -1,3 +1,10 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Main file.
+ *
+ * Copyright (C) 2022 Dennis Kaydalov
+ */ 
+
 package org.codeberg.denniskaydalov;
 
 /**
