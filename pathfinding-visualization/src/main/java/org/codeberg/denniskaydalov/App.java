@@ -7,6 +7,8 @@
 
 package org.codeberg.denniskaydalov;
 
+import javax.swing.JFrame;
+
 /**
  * Hello world!
  *
@@ -15,6 +17,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        NestedLayoutFrame appWindow = new NestedLayoutFrame(); 
+        
+        appWindow.setSize( 960, 540 );
+        appWindow.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        appWindow.setVisible( true );
     }
 }
