@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
- * Main file.
+ * Label to show mouse position file.
  *
  * Copyright (C) 2022 Dennis Kaydalov
  */ 
@@ -21,7 +21,6 @@ public class MousePositionLabel extends MouseAdapter {
         label = new JLabel("Unknown");
 
         panel.add(label);
-        panel.addMouseListener(this);
     }
 
     public JPanel getPanel() {

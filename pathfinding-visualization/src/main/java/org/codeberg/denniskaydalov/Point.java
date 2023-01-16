@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
- * Main file.
+ * Point file.
  *
  * Copyright (C) 2022 Dennis Kaydalov
  */ 
