@@ -13,6 +13,8 @@ import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 
 public class NestedLayoutFrame extends JFrame {
+
+    final boolean DEBUG = true;
     
     public NestedLayoutFrame() {
         super("NestedLayout Test");
@@ -27,7 +29,13 @@ public class NestedLayoutFrame extends JFrame {
         nestedPanel.add(placeableOptions);
         nestedPanel.add(start);
 
-        Grid grid = new Grid(new Point(34, 14), new Point(53, 100), 25);
+        if(DEBUG) {
+            MousePositionLabel mousePositionLabel = new MousePositionLabel();
+            nestedPanel.add(mousePositionLabel.getPanel());
+            addMouseMotionListener(mousePositionLabel);
+        }
+
+        Grid grid = new Grid(new Point(34, 14), new Point(53, 50), 25);
         
         add(nestedPanel, BorderLayout.NORTH); 
         add(grid, BorderLayout.CENTER);
