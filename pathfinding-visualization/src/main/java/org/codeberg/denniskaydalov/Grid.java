@@ -11,12 +11,12 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 
 public class Grid extends JPanel {
-    private Pair gridSize;
-    private Pair position;
+    private Point gridSize;
+    private Point position;
     private int cellSize;
     private Cell cells[][];
     
-    public Grid(Pair gridSize, Pair position, int cellSize) {
+    public Grid(Point gridSize, Point position, int cellSize) {
         this.gridSize = gridSize;
         this.position = position;
         this.cellSize = cellSize;
@@ -25,10 +25,11 @@ public class Grid extends JPanel {
 
     @Override
 	public void paintComponent(Graphics g) {
-        //System.out.println(g.getClipBounds()); // return rectangle (use .getWidth and .getHeight)
+        super.paintComponent( g );
+
         for(int i = 0; i < gridSize.y; ++i) {
             for(int j = 0; j < gridSize.x; ++j) {
-                cells[i][j] = new Cell(new Pair(position.x + cellSize * j, position.y + cellSize * i), cellSize);
+                cells[i][j] = new Cell(new Point(position.x + cellSize * j, position.y + cellSize * i), cellSize);
                 cells[i][j].draw(g);
             }
         }

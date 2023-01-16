@@ -8,26 +8,28 @@
 package org.codeberg.denniskaydalov;
 
 import javax.swing.JFrame;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 
 public class NestedLayoutFrame extends JFrame {
-    private JButton button;
     
     public NestedLayoutFrame() {
         super("NestedLayout Test");
         
         JPanel nestedPanel = new JPanel();
 
-        JComboBox<String> touchDownMenu = new JComboBox<String>(new String[] { "a", "b", "c" });
+        JComboBox<String> algorithmOptions = new JComboBox<String>(new String[] { "BFS", "Dijkstra's", "A*" });
+        JComboBox<String> placeableOptions = new JComboBox<String>(new String[] { "Obstacles", "Start", "End"});
+        StartButton start = new StartButton();
 
-        nestedPanel.add(touchDownMenu);
+        nestedPanel.add(algorithmOptions);
+        nestedPanel.add(placeableOptions);
+        nestedPanel.add(start);
 
-        Grid grid = new Grid(new Pair(34, 14), new Pair(53, 100), 25);
+        Grid grid = new Grid(new Point(34, 14), new Point(53, 100), 25);
         
         add(nestedPanel, BorderLayout.NORTH); 
-        add (grid, BorderLayout.CENTER);
+        add(grid, BorderLayout.CENTER);
     }
 }

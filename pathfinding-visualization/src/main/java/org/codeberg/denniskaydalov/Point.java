@@ -7,11 +7,11 @@
 
 package org.codeberg.denniskaydalov;
 
-public class Pair {
+public class Point {
     public int x;
     public int y;
 
-    public Pair(int x, int y) {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }

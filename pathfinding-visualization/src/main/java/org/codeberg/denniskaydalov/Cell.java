@@ -11,10 +11,10 @@ import java.awt.Graphics;
 import java.awt.Color;
 
 public class Cell {
-    private Pair position;
+    private Point position;
     private int size;
 
-    public Cell(Pair position, int size) {
+    public Cell(Point position, int size) {
         this.position = position;
         this.size = size;
     }
