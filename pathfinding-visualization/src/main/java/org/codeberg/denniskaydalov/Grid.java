@@ -9,6 +9,7 @@ package org.codeberg.denniskaydalov;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
+import java.awt.Point;
 
 public class Grid extends JPanel {
     private Point gridSize;

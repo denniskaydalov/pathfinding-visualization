@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import java.awt.BorderLayout;
+import java.awt.Point;
 
 public class NestedLayoutFrame extends JFrame {
 
@@ -35,9 +36,9 @@ public class NestedLayoutFrame extends JFrame {
             addMouseMotionListener(mousePositionLabel);
         }
 
-        Grid grid = new Grid(new Point(34, 14), new Point(53, 50), 25);
+        Grid grid = new Grid(new Point(20, 20), new Point(45, 20), 20);
         
-        add(nestedPanel, BorderLayout.NORTH); 
+        add(nestedPanel, BorderLayout.SOUTH); 
         add(grid, BorderLayout.CENTER);
     }
 }

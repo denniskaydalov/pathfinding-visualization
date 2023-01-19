@@ -9,6 +9,7 @@ package org.codeberg.denniskaydalov;
 
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Point;
 
 public class Cell {
     private Point position;

@@ -19,7 +19,7 @@ public class App
     {
         NestedLayoutFrame appWindow = new NestedLayoutFrame(); 
         
-        appWindow.setSize( 960, 540 );
+        appWindow.setSize( 500, 500 );
         appWindow.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         appWindow.setVisible( true );
     }
