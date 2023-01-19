@@ -2,6 +2,7 @@ org/codeberg/denniskaydalov/Grid.class
 org/codeberg/denniskaydalov/MousePositionLabel.class
 org/codeberg/denniskaydalov/StartButton.class
 org/codeberg/denniskaydalov/Cell.class
+org/codeberg/denniskaydalov/App$1.class
+org/codeberg/denniskaydalov/Grid$1.class
 org/codeberg/denniskaydalov/App.class
-org/codeberg/denniskaydalov/Point.class
 org/codeberg/denniskaydalov/NestedLayoutFrame.class

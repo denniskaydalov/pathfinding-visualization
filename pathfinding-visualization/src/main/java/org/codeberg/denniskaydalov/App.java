@@ -8,6 +8,7 @@
 package org.codeberg.denniskaydalov;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  * Hello world!
@@ -17,10 +18,15 @@ public class App
 {
     public static void main( String[] args )
     {
-        NestedLayoutFrame appWindow = new NestedLayoutFrame(); 
+		SwingUtilities.invokeLater(new Runnable(){
+			@Override
+			public void run() {
+                NestedLayoutFrame appWindow = new NestedLayoutFrame(); 
         
-        appWindow.setSize( 500, 500 );
-        appWindow.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        appWindow.setVisible( true );
+                appWindow.setSize( 500, 500 );
+                appWindow.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+                appWindow.setVisible( true );
+            }
+        });
     }
 }

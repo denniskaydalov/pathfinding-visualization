@@ -15,8 +15,6 @@ import java.awt.Point;
 
 public class NestedLayoutFrame extends JFrame {
 
-    final boolean DEBUG = true;
-    
     public NestedLayoutFrame() {
         super("NestedLayout Test");
         
@@ -29,12 +27,6 @@ public class NestedLayoutFrame extends JFrame {
         nestedPanel.add(algorithmOptions);
         nestedPanel.add(placeableOptions);
         nestedPanel.add(start);
-
-        if(DEBUG) {
-            MousePositionLabel mousePositionLabel = new MousePositionLabel();
-            nestedPanel.add(mousePositionLabel.getPanel());
-            addMouseMotionListener(mousePositionLabel);
-        }
 
         Grid grid = new Grid(new Point(20, 20), new Point(45, 20), 20);
         
