@@ -64,7 +64,7 @@ public class PathFinding {
         }
         //Reverse the route - bring start to the front
         Collections.reverse(route);
-        //Output the route
-        System.out.println(route);
+
+        Grid.getInstance().setFinalPath(route);
     }
 }

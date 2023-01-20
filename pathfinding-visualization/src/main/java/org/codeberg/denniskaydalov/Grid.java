@@ -12,6 +12,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.util.Queue;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Grid extends JPanel {
     private Point gridSize;
@@ -56,15 +58,38 @@ public class Grid extends JPanel {
 
         for(int i = 0; i < gridSize.y; ++i) {
             for(int j = 0; j < gridSize.x; ++j) {
-                if(j < gridSize.x - 1 && cells[i][j + 1].getColor() != Color.GRAY)
-                    nodes[gridSize.y * i + j].addNeighbor(nodes[gridSize.y * i + 1 + j]);
-                if(i < gridSize.y - 1 && cells[i + 1][j].getColor() != Color.GRAY)
-                    nodes[gridSize.y * i + j].addNeighbor(nodes[gridSize.y * (i + 1) + j]);
+                if(cells[i][j].getColor() != Color.GRAY) {
+                    if(j < gridSize.x - 1 && cells[i][j + 1].getColor() != Color.GRAY)
+                        nodes[gridSize.y * i + j].addNeighbor(nodes[gridSize.y * i + 1 + j]);
+                    if(i < gridSize.y - 1 && cells[i + 1][j].getColor() != Color.GRAY)
+                        nodes[gridSize.y * i + j].addNeighbor(nodes[gridSize.y * (i + 1) + j]);
+                }
             }
         }
 
         startNode = nodes[(start.getPosition().x-position.x)/cellSize + (start.getPosition().y-position.y)/cellSize * gridSize.y];
         endNode = nodes[(end.getPosition().x-position.x)/cellSize + (end.getPosition().y-position.y)/cellSize * gridSize.y];
+    }
+
+    public void printGridNodes() {
+        for(Node node : nodes) {
+            System.out.print(String.format("id: %d, neighbors: ", node.id));
+            for(Node neighborNode : node.neighbors) {
+                System.out.print(String.format("%d, ", neighborNode.id));
+            }
+            System.out.println();
+        }
+    }
+
+    public void setFinalPath(ArrayList<Node> route) {
+        redoVisited();
+
+        for(Node node : route) {
+            Cell changedCell = cells[node.id / cellSize][node.id % cellSize];
+            if(changedCell != start)
+                changedCell.setColor(Color.YELLOW);
+            update();
+        }
     }
 
     public void setVisited(Queue<Node> queue) {
