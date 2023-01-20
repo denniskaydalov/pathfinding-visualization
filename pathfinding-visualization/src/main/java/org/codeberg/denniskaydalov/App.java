@@ -15,7 +15,7 @@ public class App
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
 			public void run() {
-                NestedLayoutFrame appWindow = new NestedLayoutFrame(); 
+                VisualizerFrame appWindow = new VisualizerFrame(); 
         
                 appWindow.setSize( 500, 500 );
                 appWindow.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );

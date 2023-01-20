@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class PathFinding {
-    public static void bfs(Grid grid, Node start, Node end) {
+    public static void bfs(Grid grid, Node start, Node end, int speed) {
         Queue<Node> queue = new LinkedList<>();
 
         //Visit and add start node to the queue
@@ -22,7 +22,7 @@ public class PathFinding {
 
         //BFS until queue is empty and not reached to the end node
         while(!queue.isEmpty()){
-            if(System.currentTimeMillis() - currentTime < 100)
+            if(System.currentTimeMillis() - currentTime < speed - 80)
                 continue;
 
             currentTime = System.currentTimeMillis();

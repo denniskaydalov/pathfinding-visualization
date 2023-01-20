@@ -44,8 +44,8 @@ public class Grid extends JPanel {
         setGraph();
         addMouseListener(mouseAdapter);
         constructNodeGraph();
+        update();
     }
-
 
     private void constructNodeGraph() {
         nodes = new Node[gridSize.x * gridSize.x];

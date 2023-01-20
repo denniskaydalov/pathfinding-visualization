@@ -11,17 +11,25 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingWorker;;
 
 public class StartButton extends JButton implements ActionListener{
-    public StartButton() {
+    private int speed;
+
+    public StartButton(int speed) {
         super("Start");
 
+        this.speed = speed;
+
         addActionListener(this);
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     @Override
     public void actionPerformed( ActionEvent e ) {
         SwingWorker worker = new SwingWorker<Void,Void>(){
             protected Void doInBackground(){
-                PathFinding.bfs(Grid.getInstance(), Grid.getInstance().getStartNode(), Grid.getInstance().getEndNode());
+                PathFinding.bfs(Grid.getInstance(), Grid.getInstance().getStartNode(), Grid.getInstance().getEndNode(), speed);
                 return null;
             }
         };
