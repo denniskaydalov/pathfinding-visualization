@@ -1,7 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
- * Grid file.
- *
  * Copyright (C) 2022 Dennis Kaydalov
  */ 
 
@@ -22,8 +20,16 @@ public class Grid extends JPanel {
     private String selection;
     private Cell start;
     private Cell end;
+
+    private static Grid grid = new Grid();
+
+    private Grid(){};
+
+    public static Grid getInstance() {
+        return grid;
+    }
     
-    public Grid(Point gridSize, Point position, int cellSize) {
+    public void init(Point gridSize, Point position, int cellSize) {
         this.gridSize = gridSize;
         this.position = position;
         this.cellSize = cellSize;

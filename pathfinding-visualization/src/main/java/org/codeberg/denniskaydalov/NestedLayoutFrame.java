@@ -1,7 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
- * Main frame file.
- *
  * Copyright (C) 2022 Dennis Kaydalov
  */ 
 
@@ -18,7 +16,6 @@ import java.awt.event.ActionEvent;
 
 public class NestedLayoutFrame extends JFrame {
 
-    private Grid grid;
     private JComboBox<String> placeableOptions;
     private JComboBox<String> algorithmOptions;
     private JPanel nestedPanel;
@@ -32,11 +29,11 @@ public class NestedLayoutFrame extends JFrame {
         algorithmOptions = new JComboBox<String>(new String[] { "BFS", "Dijkstra's", "A*" });
         placeableOptions = new JComboBox<String>(new String[] { "Obstacles", "Start", "End"});
 
-        grid = new Grid(new Point(20, 20), new Point(45, 20), 20);
+        Grid.getInstance().init(new Point(20, 20), new Point(45, 20), 20);
 
         placeableOptions.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                grid.setSelection((String) placeableOptions.getSelectedItem());
+                Grid.getInstance().setSelection((String) placeableOptions.getSelectedItem());
             }
         });
 
@@ -47,6 +44,6 @@ public class NestedLayoutFrame extends JFrame {
         nestedPanel.add(start);
         
         add(nestedPanel, BorderLayout.SOUTH); 
-        add(grid, BorderLayout.CENTER);
+        add(Grid.getInstance(), BorderLayout.CENTER);
     }
 }
