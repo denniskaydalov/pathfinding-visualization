@@ -26,6 +26,7 @@ public class Grid extends JPanel {
     private Node startNode;
     private Node endNode;
     private Node nodes[];
+    private boolean searching;
 
     private static Grid grid = new Grid();
 
@@ -39,6 +40,7 @@ public class Grid extends JPanel {
         this.gridSize = gridSize;
         this.position = position;
         this.cellSize = cellSize;
+        searching = false;
         selection = "Obstacles";
         cells = new Cell[gridSize.y][gridSize.x];
         setGraph();
@@ -90,9 +92,12 @@ public class Grid extends JPanel {
                 changedCell.setColor(Color.YELLOW);
             update();
         }
+
+        searching = false;
     }
 
     public void setVisited(Queue<Node> queue) {
+        searching = true;
         redoVisited();
         for(Node node : queue) {
             Cell changedCell = cells[node.id / cellSize][node.id % cellSize];
@@ -125,6 +130,10 @@ public class Grid extends JPanel {
         this.selection = selection;
     }
 
+    public boolean isSearching() {
+        return searching;
+    }
+
     private void update(){
 		this.repaint();
 	}
@@ -140,7 +149,7 @@ public class Grid extends JPanel {
     private MouseAdapter mouseAdapter = new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent e){ 
-            if(e.getX() > position.x && e.getY() > position.y && e.getX() < position.x + cellSize * gridSize.x && e.getY() < position.y + cellSize * gridSize.y) {
+            if(e.getX() > position.x && e.getY() > position.y && e.getX() < position.x + cellSize * gridSize.x && e.getY() < position.y + cellSize * gridSize.y && !searching) {
                 switch(selection) {
                     case "Obstacles": 
                         Cell tempObstacleCell = cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize];

@@ -47,6 +47,7 @@ public class VisualizerFrame extends JFrame {
             @Override
             public void stateChanged(ChangeEvent e) {
                 speedLabel.setText(String.format("speed: %d", speedSlider.getValue()));
+                start.setSpeed(speedSlider.getValue());
             }
         });
 
@@ -60,8 +61,10 @@ public class VisualizerFrame extends JFrame {
         clear.addActionListener(new ActionListener() {
             @Override 
             public void actionPerformed(ActionEvent e) {
-                Grid.getInstance().init(new Point(20, 20), new Point(45, 20), 20);
-                placeableOptions.setSelectedItem("Obstacles");
+                if(!Grid.getInstance().isSearching()) {
+                    Grid.getInstance().init(new Point(20, 20), new Point(45, 20), 20);
+                    placeableOptions.setSelectedItem("Obstacles");
+                }
             }
         });
 
