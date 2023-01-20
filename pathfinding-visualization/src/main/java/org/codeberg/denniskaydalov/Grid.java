@@ -134,6 +134,10 @@ public class Grid extends JPanel {
         return searching;
     }
 
+    public void setSearching(boolean searching) {
+        this.searching = searching;
+    }
+
     private void update(){
 		this.repaint();
 	}

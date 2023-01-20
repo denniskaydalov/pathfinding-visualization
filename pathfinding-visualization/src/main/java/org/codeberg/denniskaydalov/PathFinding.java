@@ -5,6 +5,7 @@
 
 package org.codeberg.denniskaydalov;
 
+import javax.swing.JOptionPane;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.ArrayList;
@@ -65,6 +66,11 @@ public class PathFinding {
         //Reverse the route - bring start to the front
         Collections.reverse(route);
 
-        Grid.getInstance().setFinalPath(route);
+        if(route.size() == 1) {
+            Grid.getInstance().setSearching(false);
+            JOptionPane.showMessageDialog(null, "No possible solution found");
+        }
+        else 
+            Grid.getInstance().setFinalPath(route);
     }
 }
