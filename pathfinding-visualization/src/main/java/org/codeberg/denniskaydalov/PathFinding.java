@@ -30,8 +30,8 @@ public class PathFinding {
      * 
      * @param grid - main grid
      * @param start - start node
-     * @param start - end node
-     * @param start - speed for the visualization
+     * @param end - end node
+     * @param speed - speed for the visualization
      */
     public static void bfs(Grid grid, Node start, Node end, int speed) {
         Queue<Node> queue = new LinkedList<>();

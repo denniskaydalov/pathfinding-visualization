@@ -213,7 +213,7 @@ public class Grid extends JPanel {
     /**
      * Mutator method for the searching boolean
      * 
-     * @param selection - set searching 
+     * @param searching - set searching 
      */
     public void setSearching(boolean searching) {
         this.searching = searching;
