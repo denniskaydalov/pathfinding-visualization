@@ -320,4 +320,15 @@ public class Grid extends JPanel {
         end = cells[gridSize.y - 1][gridSize.x - 1];
         end.setColor(Color.RED);
     }
+
+    /**
+     * Returns a string representation of the object
+     * 
+     * @return String - the representation of the object
+     */
+    public String toString(){
+        String temp = "";
+        for(Node node : nodes) temp = temp + " " + node.id;
+        return temp;
+    }
 }

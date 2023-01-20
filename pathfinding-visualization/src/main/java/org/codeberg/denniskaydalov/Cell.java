@@ -85,4 +85,13 @@ public class Cell {
     public Color getColor() {
         return color;
     }
+
+    /**
+     * Returns a string representation of the object
+     * 
+     * @return String - the representation of the object
+     */
+    public String toString(){
+        return "x: " + Integer.toString(position.x) + " y: " + Integer.toString(position.y) + " color: " + color;
+    }
 }

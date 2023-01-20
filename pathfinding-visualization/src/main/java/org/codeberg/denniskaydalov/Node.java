@@ -46,4 +46,13 @@ public class Node {
         neighbors.add(node);
         node.neighbors.add(this);
     }
+
+    /**
+     * Returns a string representation of the object
+     * 
+     * @return String - the representation of the object
+     */
+    public String toString(){
+        return Integer.toString(this.id);
+    }
 }
