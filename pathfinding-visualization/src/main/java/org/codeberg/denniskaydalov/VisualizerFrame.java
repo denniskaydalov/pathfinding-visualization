@@ -13,12 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 public class VisualizerFrame extends JFrame {
 
@@ -28,6 +33,7 @@ public class VisualizerFrame extends JFrame {
     private JLabel speedLabel;
     private StartButton start;
     private JButton clear;
+    private JButton save;
 
     public VisualizerFrame() {
         super("Pathfinding Visualizer");
@@ -38,6 +44,7 @@ public class VisualizerFrame extends JFrame {
         placeableOptions = new JComboBox<String>(new String[] { "Obstacles", "Start", "End", "Clear"});
         speedLabel = new JLabel("speed: 100");
         clear = new JButton("Clear");
+        save = new JButton("Save");
 
         speedSlider.setPreferredSize(new Dimension(100, 20));
 
@@ -58,6 +65,22 @@ public class VisualizerFrame extends JFrame {
             }
         });
 
+        save.addActionListener(new ActionListener() {
+            @Override 
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    BufferedImage image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+                    Graphics graphics = image.getGraphics();
+                    paint(graphics);
+                    ImageIO.write(image, "png", new File("graphics.png"));
+                    JOptionPane.showMessageDialog(null, "Saved to " + System.getProperty("user.dir") + "/graphics.png");
+                }
+                catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+        });
+
         clear.addActionListener(new ActionListener() {
             @Override 
             public void actionPerformed(ActionEvent e) {
@@ -70,6 +93,7 @@ public class VisualizerFrame extends JFrame {
 
         start = new StartButton(speedSlider.getValue());
 
+        nestedPanel.add(save);
         nestedPanel.add(clear);
         nestedPanel.add(speedLabel);
         nestedPanel.add(speedSlider);
