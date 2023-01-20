@@ -68,6 +68,7 @@ public class Grid extends JPanel {
     }
 
     public void setVisited(Queue<Node> queue) {
+        redoVisited();
         for(Node node : queue) {
             Cell changedCell = cells[node.id / cellSize][node.id % cellSize];
             if(changedCell != start)
@@ -102,6 +103,14 @@ public class Grid extends JPanel {
     private void update(){
 		this.repaint();
 	}
+
+    private void redoVisited() {
+        for(int i = 0; i < gridSize.y; ++i) {
+            for(int j = 0; j < gridSize.x; ++j) {
+                if(cells[i][j].getColor() == Color.BLUE) cells[i][j].setColor(Color.MAGENTA);
+            }
+        }
+    }
 
     private MouseAdapter mouseAdapter = new MouseAdapter() {
         @Override
