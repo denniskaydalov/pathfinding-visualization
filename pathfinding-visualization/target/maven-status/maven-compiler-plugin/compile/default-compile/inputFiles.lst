@@ -1,4 +1,6 @@
 /home/dennis/pathfinding-visualizer/pathfinding-visualization/src/main/java/org/codeberg/denniskaydalov/App.java
+/home/dennis/pathfinding-visualizer/pathfinding-visualization/src/main/java/org/codeberg/denniskaydalov/Node.java
+/home/dennis/pathfinding-visualizer/pathfinding-visualization/src/main/java/org/codeberg/denniskaydalov/PathFinding.java
 /home/dennis/pathfinding-visualizer/pathfinding-visualization/src/main/java/org/codeberg/denniskaydalov/Grid.java
 /home/dennis/pathfinding-visualizer/pathfinding-visualization/src/main/java/org/codeberg/denniskaydalov/NestedLayoutFrame.java
 /home/dennis/pathfinding-visualizer/pathfinding-visualization/src/main/java/org/codeberg/denniskaydalov/Cell.java

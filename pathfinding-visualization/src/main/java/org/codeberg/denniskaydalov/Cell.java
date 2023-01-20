@@ -27,6 +27,14 @@ public class Cell {
         g.drawRect(position.x, position.y, size, size);
     }
 
+    public Point getPosition() {
+        return position;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
     public void setColor(Color color) {
         this.color = color;
     }

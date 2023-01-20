@@ -27,7 +27,7 @@ public class NestedLayoutFrame extends JFrame {
         nestedPanel = new JPanel();
 
         algorithmOptions = new JComboBox<String>(new String[] { "BFS", "Dijkstra's", "A*" });
-        placeableOptions = new JComboBox<String>(new String[] { "Obstacles", "Start", "End"});
+        placeableOptions = new JComboBox<String>(new String[] { "Obstacles", "Start", "End", "Clear"});
 
         Grid.getInstance().init(new Point(20, 20), new Point(45, 20), 20);
 
