@@ -1,5 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
+ * Pathfinding class which defines the logic for pathfinding on a grid using the BFS algorithm.
+ *
+ * name: Dennis Kaydalov
+ *
+ * date: January 20, 2023
+ *
  * Copyright (C) 2022 Dennis Kaydalov
  */ 
 
@@ -11,7 +17,22 @@ import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This class defines the logic for the pathfinding using BFS, it reports back to the grid for visualization.
+ * 
+ * @author Dennis Kaydalov
+ * 
+ * @version January 20, 2023
+ */
 public class PathFinding {
+    /**
+     * Method to start bfs. Accepts the grid, start and end nodes and the speed for the visualization
+     * 
+     * @param grid - main grid
+     * @param start - start node
+     * @param start - end node
+     * @param start - speed for the visualization
+     */
     public static void bfs(Grid grid, Node start, Node end, int speed) {
         Queue<Node> queue = new LinkedList<>();
 
@@ -19,15 +40,19 @@ public class PathFinding {
         start.visited = true;
         queue.add(start);
 
+        //current time for delay calculation
 		long currentTime = System.currentTimeMillis();
 
         //BFS until queue is empty and not reached to the end node
         while(!queue.isEmpty()){
+            //if the delay has not ended yet, skip
             if(System.currentTimeMillis() - currentTime < speed - 80)
                 continue;
 
+            //reset delay
             currentTime = System.currentTimeMillis();
 
+            //sent a request to the grid to update its cell's colors
             grid.setVisited(queue);
 
             //pop a node from queue for search operation
@@ -53,7 +78,11 @@ public class PathFinding {
         trace_route(end);
     }
 
-    //Function to trace the route using preceding nodes
+    /**
+     * Get trace route from the end to the start of the grid (shortest path calculation)
+     * 
+     * @param end - get the end node for reversing
+     */
     private static void trace_route(Node end){
         Node node = end;
         ArrayList<Node> route = new ArrayList<>();
@@ -66,11 +95,13 @@ public class PathFinding {
         //Reverse the route - bring start to the front
         Collections.reverse(route);
 
+        //if the route has no real path then send a JOptionPane
         if(route.size() == 1) {
             Grid.getInstance().setSearching(false);
             JOptionPane.showMessageDialog(null, "No possible solution found");
         }
         else 
+            //send a request to the grid to change colors of the cells to show the final route
             Grid.getInstance().setFinalPath(route);
     }
 }
