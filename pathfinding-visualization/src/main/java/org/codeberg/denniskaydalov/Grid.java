@@ -140,34 +140,38 @@ public class Grid extends JPanel {
     private MouseAdapter mouseAdapter = new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent e){ 
-            switch(selection) {
-                case "Obstacles": 
-                    cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize].setColor(Color.GRAY);
-                    constructNodeGraph();
-                    break;
-                case "Start": 
-                    Cell tempStartCell = cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize];
-                    if(tempStartCell.getColor() != Color.RED) {
-                        start.setColor(Color.WHITE);
-                        start = tempStartCell;
-                        start.setColor(Color.GREEN);
+            if(e.getX() > position.x && e.getY() > position.y && e.getX() < position.x + cellSize * gridSize.x && e.getY() < position.y + cellSize * gridSize.y) {
+                switch(selection) {
+                    case "Obstacles": 
+                        Cell tempObstacleCell = cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize];
+                        if(tempObstacleCell.getColor() != Color.RED && tempObstacleCell.getColor() != Color.GREEN)
+                            tempObstacleCell.setColor(Color.GRAY);
                         constructNodeGraph();
-                    }
-                    break;
-                case "End": 
-                    Cell tempEndCell = cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize];
-                    if(tempEndCell.getColor() != Color.GREEN) {
-                        end.setColor(Color.WHITE);
-                        end = tempEndCell;
-                        end.setColor(Color.RED);
-                        constructNodeGraph();
-                    }
-                    break;
-                case "Clear":
-                    cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize].setColor(Color.WHITE);
-                    break;
+                        break;
+                    case "Start": 
+                        Cell tempStartCell = cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize];
+                        if(tempStartCell.getColor() != Color.RED) {
+                            start.setColor(Color.WHITE);
+                            start = tempStartCell;
+                            start.setColor(Color.GREEN);
+                            constructNodeGraph();
+                        }
+                        break;
+                    case "End": 
+                        Cell tempEndCell = cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize];
+                        if(tempEndCell.getColor() != Color.GREEN) {
+                            end.setColor(Color.WHITE);
+                            end = tempEndCell;
+                            end.setColor(Color.RED);
+                            constructNodeGraph();
+                        }
+                        break;
+                    case "Clear":
+                        cells[(e.getY()-position.y)/cellSize][(e.getX()-position.x)/cellSize].setColor(Color.WHITE);
+                        break;
+                }
+                update();
             }
-            update();
         }
     };
 
